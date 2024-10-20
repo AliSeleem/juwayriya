@@ -1,0 +1,14 @@
+- npm init 
+- tsc init
+- tsconfig.json
+- package.json
+- app.ts
+- config
+- utils
+- middlewares
+- endpoint
+  - interface
+  - model
+  - controller
+  - validator
+  - route
