@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import asyncHandler from "express-async-handler";
 import Appointment from "../models/Appointment";
 import ApiError from "../utils/ApiError";
+import Bill from "../models/Bill";
 
 // Create appointment -> for admin and user
 export const createAppointment = asyncHandler(
@@ -17,6 +18,9 @@ export const createAppointment = asyncHandler(
 			}
 			// Create appointment
 			const app = await Appointment.create(req.body);
+			if (!app) {
+				return next(new ApiError("Can not create appointment", 400));
+			}
 			// Return appointment
 			res
 				.status(201)
@@ -100,6 +104,9 @@ export const setAppointmentAccepted = asyncHandler(
 				},
 				{ new: true }
 			);
+			if (!app) {
+				return next(new ApiError("Appointment not found", 404));
+			}
 			res.status(201).json({ msg: "Appointment accepted", data: app });
 		} catch (error) {
 			// Return error
@@ -111,16 +118,25 @@ export const setAppointmentAccepted = asyncHandler(
 // Set appointment done -> for admin
 export const setAppointmentDone = asyncHandler(
 	async (req: Request, res: Response, next: NextFunction) => {
-		try {
-			// Find appointment
-			const app = await Appointment.findByIdAndUpdate(req.params.id, {
-				status: "Done",
-			});
-			res.status(201).json({ msg: "Appointment done", data: app });
-		} catch (error) {
-			// Return error
+		// Find appointment
+		let app = await Appointment.findById(req.params.id);
+		if (!app) {
 			return next(new ApiError("Can not done appointment", 400));
 		}
+		if (app.status === "Done") {
+			return next(new ApiError("appointment already done ", 400));
+		}
+		app.status = "Done";
+		app.save({ validateModifiedOnly: true });
+		const bill = await Bill.create({
+			type: "income",
+			amount: 1000,
+			description: `appointment from user`,
+			appointment: app._id,
+			date: Date.now(),
+		});
+
+		res.status(201).json({ msg: "Appointment done", data: app });
 	}
 );
 

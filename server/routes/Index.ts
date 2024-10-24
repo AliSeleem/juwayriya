@@ -6,6 +6,7 @@ import Auth from "./Auth";
 import ApiError from "../utils/ApiError";
 import globalErrors from "../middleware/globalErrors";
 import Appointment from "./Appointment";
+import Bill from "./Bill";
 
 export const MountRoutes = (app: Application) => {
 	// Routers
@@ -13,6 +14,7 @@ export const MountRoutes = (app: Application) => {
 	app.use("/api/user", User);
 	app.use("/api/auth", Auth);
 	app.use("/api/appointment", Appointment);
+	app.use("/api/bill", Bill);
 
 	// Not found handler
 	app.all("**", (req: Request, res: Response, next: NextFunction) => {

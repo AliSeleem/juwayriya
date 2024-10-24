@@ -1,7 +1,7 @@
 import { model, Schema } from "mongoose";
 import Appointment from "../interfaces/Appointment";
 
-const Appointment: Schema = new Schema<Appointment>(
+const AppointmentSchema: Schema = new Schema<Appointment>(
 	{
 		user: { type: Schema.Types.ObjectId, required: true, ref: "user" },
 		date: [{ type: Date, required: true }],
@@ -16,4 +16,11 @@ const Appointment: Schema = new Schema<Appointment>(
 	{ timestamps: true }
 );
 
-export default model<Appointment>("appointments", Appointment);
+// AppointmentSchema.pre<Appointment>(/^find/, function (next) {
+// 	this.populate({
+// 		path: "user",
+// 		select: "name phone",
+// 	});
+// });
+
+export default model<Appointment>("appointments", AppointmentSchema);

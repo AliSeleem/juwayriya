@@ -1,4 +1,4 @@
-import { Document, RootQuerySelector } from "mongoose";
+import { Document, RootQuerySelector, Schema } from "mongoose";
 
 export default interface User extends Document {
 	name: string;
@@ -8,7 +8,7 @@ export default interface User extends Document {
 	gender: string;
 	role: string;
 	dateOfBirth: Date;
-	appointments: any[];
+	appointments: Schema.Types.ObjectId[];
 	passwordChangedAt: Date | number;
 	resetCode: string | undefined;
 	resetCodeExpireTime: Date | number | undefined;

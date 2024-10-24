@@ -4,6 +4,9 @@ import dotenv from "dotenv";
 import DBInit from "./config/DB";
 import { Server } from "http";
 import { MountRoutes } from "./routes/Index";
+import compression from "compression";
+import mongoSanitize from "express-mongo-sanitize";
+import helmet from "helmet";
 
 // app init
 const app: express.Application = express();
@@ -19,6 +22,20 @@ app.use(express.json());
 
 // database connection
 DBInit();
+
+// Security middleware
+app.use(express.json({ limit: "10kb" }));
+app.use(
+	cors({
+		origin: ["http://localhost:4200"],
+		methods: ["POST", "GET", "PUT", "DELETE"],
+		allowedHeaders: ["Content-Type", "Authorization"],
+		credentials: true,
+	})
+);
+app.use(compression());
+app.use(mongoSanitize());
+app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
 
 // Test route
 app.get("/", (req: Request, res: Response) => {
