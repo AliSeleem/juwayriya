@@ -5,12 +5,14 @@ import User from "./User";
 import Auth from "./Auth";
 import ApiError from "../utils/ApiError";
 import globalErrors from "../middleware/globalErrors";
+import Appointment from "./Appointment";
 
 export const MountRoutes = (app: Application) => {
 	// Routers
 	app.use("/api/clinic", Clinic);
 	app.use("/api/user", User);
 	app.use("/api/auth", Auth);
+	app.use("/api/appointment", Appointment);
 
 	// Not found handler
 	app.all("**", (req: Request, res: Response, next: NextFunction) => {

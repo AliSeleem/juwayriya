@@ -15,7 +15,7 @@ const userSchema: Schema = new Schema<User>(
 		},
 		gender: { type: String, required: true, enum: ["male", "female"] },
 		dateOfBirth: { type: Date, required: true },
-		appointments: [{ type: Schema.Types.ObjectId }],
+		appointments: [{ type: Schema.Types.ObjectId, ref: "appointments" }],
 		passwordChangedAt: Date,
 		resetCode: String,
 		resetCodeExpireTime: Date,
@@ -27,7 +27,7 @@ const userSchema: Schema = new Schema<User>(
 // userSchema.pre<User>(/^find/, function (next) {
 // 	this.populate({
 // 		path: "appointments",
-// 		select: "date time duration status notes feedback",
+// 		select: "date duration status notes feedback",
 // 	});
 // });
 
