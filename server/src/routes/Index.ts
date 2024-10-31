@@ -10,7 +10,7 @@ import Bill from "./Bill";
 
 export const MountRoutes = (app: Application) => {
 	// Routers
-	app.use("/api/clinic", Clinic);
+	app.use("/api/clinic", Clinic); // http://localhost:5000//api/clinic
 	app.use("/api/user", User);
 	app.use("/api/auth", Auth);
 	app.use("/api/appointment", Appointment);

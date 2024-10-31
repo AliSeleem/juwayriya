@@ -12,10 +12,10 @@ import {
 
 const Clinic = Router();
 
-Clinic.route("/")
+Clinic.route("/") // http://localhost:5000//api/clinic/
 	.get(getClincData)
 	.patch(updateClincDataValidator, updateClincData);
-Clinic.route("/therapist")
+Clinic.route("/therapist") // http://localhost:5000//api/clinic/therapist
 	.get(getTherapistAvailability)
 	.patch(toggleTherapistAvailabilityValidator, toggleTherapistAvailability);
 

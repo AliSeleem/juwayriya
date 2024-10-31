@@ -43,7 +43,8 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 MountRoutes(app);
-
+//
+export default app;
 // app listening
 server = app.listen(PORT, () => {
 	console.log(`Server is running on http://localhost:${PORT}/`);

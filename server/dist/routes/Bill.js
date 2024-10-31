@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const Auth_1 = require("../controllers/Auth");
+const Bill_1 = require("../controllers/Bill");
+const Bill_2 = require("../validators/Bill");
+const Bill = (0, express_1.Router)();
+Bill.use(Auth_1.protectRoutes, (0, Auth_1.allowedTo)("admin"));
+Bill.get("/", Bill_1.getBills);
+Bill.post("/", Bill_2.makeBillValidator, Bill_1.makeBill);
+Bill.delete("/:id", Bill_2.deleteBillValidator, Bill_1.deleteBill);
+Bill.patch("/:id", Bill_2.setBillAsPaidValidator, Bill_1.setBillAsPaid);
+exports.default = Bill;
