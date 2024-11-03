@@ -1,9 +1,9 @@
 import Card from "./Card"
 
-const Appointments = () => {
+const Features = () => {
   return (
-    <section className="p-6 bg-fourth">
-      <h1 className="text-4xl font-bold text-primary text-center mb-8">الجلسات</h1>
+    <section id="features" className="p-6 bg-fourth">
+      <h1 className="text-4xl font-bold text-primary text-center m-8">الجلسات</h1>
       <div className="flex flex-col md:flex-row items-center justify-evenly gap-6 container mx-auto my-8">
         <Card 
           main="ساعه" 
@@ -19,4 +19,4 @@ const Appointments = () => {
   )
 }
 
-export default Appointments
+export default Features

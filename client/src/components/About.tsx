@@ -1,9 +1,9 @@
-import therapist from '../../../assets/Physcotherapy.jpg';
+import therapist from '../assets/Physcotherapy.jpg';
 
-const Data = () => {
+const About = () => {
   return (
-    <section className="p-6 bg-fourth">
-      <h1 className="text-4xl font-bold text-primary text-center mb-8">معلومات عن المعالج</h1>
+    <section id='about' className="p-6">
+      <h1 className="text-4xl font-bold text-primary text-center m-8">معلومات عن المعالج</h1>
       <div className="container mx-auto flex flex-col md:flex-row items-center rounded-lg p-6 gap-8">
         {/* Text Section */}
         <div className="text-center md:text-right md:w-1/2">
@@ -25,4 +25,4 @@ const Data = () => {
   );
 }
 
-export default Data;
+export default About
