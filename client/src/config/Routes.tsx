@@ -13,6 +13,9 @@ import Patient from "@/pages/patient/Patient";
 import PatientHome from "@/pages/patient/PatientHome";
 import PatientAppointments from "@/pages/patient/PatientAppointments";
 import PatientSettings from "@/pages/patient/PatientSettings";
+import ForgetPassword from "@/pages/auth/ForgetPassword";
+import VerifyCode from "@/pages/auth/VerifyCode";
+import ResetPassword from "@/pages/auth/ResetPassword";
 
 const Router = createBrowserRouter([
 	{
@@ -31,7 +34,19 @@ const Router = createBrowserRouter([
 			{
 				path: "/auth/signup",
 				element: <Signup/>,
-			}
+			},
+			{
+				path: "/auth/forgetpassword",
+				element: <ForgetPassword />,
+			},
+			{
+				path: "/auth/verifycode",
+				element: <VerifyCode />,
+			},
+			{
+				path: "/auth/resetpassword",
+				element: <ResetPassword />,
+			},
 		]
 	},
 	{

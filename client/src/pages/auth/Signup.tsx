@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { signup as SignupService } from '@/services/auth';
+import { checkAuth, signup as SignupService } from '@/services/auth';
 import InputField from "@/components/InputField";
 import { Link, useNavigate } from "react-router-dom";
 import Toastify from "@/services/Toastify";
@@ -34,7 +34,7 @@ const Signup = () => {
         data.errors.map((e: any) => Toastify(e.msg))
       } else {
         localStorage.setItem('token', data.token);
-        navigate("/patient/")
+        checkAuth(data.token, navigate)
       };
     },
   });
