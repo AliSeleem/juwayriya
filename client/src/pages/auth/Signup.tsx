@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { signup as SignupService } from '@/services/auth';
 import InputField from "@/components/InputField";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Toastify from "@/services/Toastify";
 import SelectField from "@/components/SelectField";
 
@@ -152,9 +152,9 @@ const Signup = () => {
           className="bg-primary text-white disabled:bg-secondary rounded-lg py-2 px-4 hover:bg-secondary block mt-3 mx-auto transition duration-300"
           type="submit"
         >
-          {mutation.isPending ? "الرجاء الانتظار.." : "تسجيل الدخول"}
+          {mutation.isPending ? "الرجاء الانتظار.." : "إنشاء حساب"}
         </button>
-        
+        <p className="text-fourth text-center">هل لديك حساب؟  <Link to={"/auth/login"} className="text-primary">سجل الدخول</Link></p>
         {mutation.isError && (
           <p className="text-red-500 text-center">
             {mutation.error instanceof Error ? mutation.error.message : "An error occurred"}

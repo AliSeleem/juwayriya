@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Login as Slogin } from '@/services/auth';
 import InputField from "@/components/InputField";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Toastify from "@/services/Toastify";
 
 // Login form interface
@@ -80,6 +80,7 @@ const Login = () => {
         >
           {mutation.isPending ? "الرجاء الانتظار.." : "تسجيل الدخول"}
         </button>
+        <p className="text-fourth text-center">ليس لديك حساب؟  <Link to={"/auth/signup"} className="text-primary">أنشئ حساب</Link></p>
         
         {mutation.isError && (
           <p className="text-red-500 text-center">
