@@ -1,6 +1,6 @@
 import InputField from "@/components/InputField";
 import { forgetpassword } from "@/services/auth";
-import Toastify from "@/services/Toastify";
+import { Toastify  } from "@/services/Toastify";
 import { useMutation } from "@tanstack/react-query";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";

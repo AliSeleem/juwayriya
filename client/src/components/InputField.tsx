@@ -8,6 +8,7 @@ function InputField <T extends FieldValues>({
   registerOptions,
   register,
   errorMessage,
+  value
 }: {
   id: string;
   name: Path<T>;
@@ -16,6 +17,7 @@ function InputField <T extends FieldValues>({
   registerOptions: RegisterOptions<T, Path<T>>;
   register: UseFormRegister<T>;
   errorMessage?: string;
+  value?: any | null
 }) {
   return (
     <>
@@ -27,6 +29,7 @@ function InputField <T extends FieldValues>({
         type={type}
         {...register(name, registerOptions)}
         id={id}
+        defaultValue={value}
       />
       {errorMessage && <p className="text-red-500">{errorMessage}</p>}
     </>

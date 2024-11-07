@@ -55,11 +55,13 @@ const Router = createBrowserRouter([
 		children: [
 			{
 				index: true,
+				path: "/patient/home",
 				element: <PatientHome />
 			},
 			{
 				path: "/patient/appointments",
 				element: <PatientAppointments />
+				
 			},
 			{
 				path: "/patient/settings",
@@ -73,6 +75,7 @@ const Router = createBrowserRouter([
 		children: [
 			{
 				index: true,
+				path: "/admin/home",
 				element: <AdminDashboard />
 			},
 			{

@@ -24,7 +24,7 @@ User.use(protectRoutes);
 User.get("/me", setLoggedUserId, getUser);
 User.put("/changePassword", updateUserPasswordValidator, updatePassword);
 User.put("/update", updateUserValidator, updateUserDetails);
-User.get("/deleteMe", setLoggedUserId, deleteUser);
+User.delete("/deleteMe", setLoggedUserId, deleteUser);
 
 // Admins routes
 User.use(allowedTo("admin"));

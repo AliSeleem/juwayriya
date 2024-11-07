@@ -1,6 +1,6 @@
 import { Slide, toast } from "react-toastify";
 
-const Toastify = (text: string) =>
+export const Toastify = (text: string) =>
 	toast(text, {
 		position: "top-center",
 		autoClose: 3000,
@@ -13,4 +13,3 @@ const Toastify = (text: string) =>
 		transition: Slide,
 	});
 
-export default Toastify;

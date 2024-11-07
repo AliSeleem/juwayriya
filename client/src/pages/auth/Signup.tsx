@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { checkAuth, signup as SignupService } from '@/services/auth';
 import InputField from "@/components/InputField";
 import { Link, useNavigate } from "react-router-dom";
-import Toastify from "@/services/Toastify";
+import { Toastify  } from "@/services/Toastify";
 import SelectField from "@/components/SelectField";
 
 // Signup form interface

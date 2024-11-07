@@ -1,6 +1,6 @@
 import InputField from "@/components/InputField";
 import { checkAuth, resetPassword } from "@/services/auth";
-import Toastify from "@/services/Toastify";
+import { Toastify  } from "@/services/Toastify";
 import { useMutation } from "@tanstack/react-query";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -28,7 +28,8 @@ const ResetPassword = () => {
       else if (data.errors){
         data.errors.map((e: any) => Toastify(e.msg))
       } else {
-        checkAuth(localStorage.getItem("token")!, navigate)
+        Toastify("تم تغيير كلمة المرور");
+        navigate("/auth/login")
       };
     },
   });

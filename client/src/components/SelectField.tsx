@@ -8,6 +8,7 @@ function SelectField<T extends FieldValues>({
   registerOptions,
   register,
   errorMessage,
+  value
 }: {
   id: string;
   name: Path<T>;
@@ -16,6 +17,7 @@ function SelectField<T extends FieldValues>({
   registerOptions: object;
   register: UseFormRegister<T>;
   errorMessage?: string;
+  value?: any | null
 }) {
   return (
     <>
@@ -26,6 +28,7 @@ function SelectField<T extends FieldValues>({
         className="rounded-lg focus:border-primary border-2 outline-none min-w-[300px] px-3 py-1 mb-3"
         {...register(name, registerOptions)}
         id={id}
+        defaultValue={value}
       >
         {options.map((option) => (
           <option key={option.value} value={option.value}>

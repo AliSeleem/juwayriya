@@ -81,10 +81,10 @@ export const updateUserValidator: RequestHandler[] = [
 			}
 			return true;
 		})
-		.custom(async (val) => {
+		.custom(async (val, { req }) => {
 			const existingUser = await User.findOne({ phone: val });
-			if (existingUser) {
-				throw new Error("Phone number is already used");
+			if (existingUser && req.user.phone !== val) {
+				throw new Error(`Phone number is already used by ${req.user.name}`);
 			}
 			return true;
 		}),
@@ -92,10 +92,10 @@ export const updateUserValidator: RequestHandler[] = [
 		.optional()
 		.isEmail()
 		.withMessage("email must be a valid email")
-		.custom(async (val) => {
+		.custom(async (val, { req }) => {
 			const existingUser = await User.findOne({ email: val });
-			if (existingUser) {
-				throw new Error("Email is already used");
+			if (existingUser && req.user.email !== val) {
+				throw new Error(`Email is already used`);
 			}
 			return true;
 		}),

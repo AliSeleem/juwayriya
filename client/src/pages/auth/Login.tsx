@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { checkAuth, Login as Slogin } from '@/services/auth';
 import InputField from "@/components/InputField";
 import { Link, useNavigate } from "react-router-dom";
-import Toastify from "@/services/Toastify";
+import {Toastify} from "@/services/Toastify";
 
 // Login form interface
 export interface Ilogin {

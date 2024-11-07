@@ -68,10 +68,14 @@ export const signup = async (data: Isignup) => {
 export const checkAuth = (token: string, nav: NavigateFunction) => {
 	const decoded: any = jwtDecode(token);
 	if (decoded.role === "admin") {
-		nav("/admin");
+		nav("/admin/home");
 	} else if (decoded.role === "user") {
-		nav("/patient");
+		nav("/patient/home");
 	} else {
 		nav("/");
 	}
+};
+
+export const logout = () => {
+	localStorage.removeItem("token");
 };
